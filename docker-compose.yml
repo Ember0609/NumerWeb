@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:18
+    container_name: numerdb
+    restart: "always"
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/Data.sql:/docker-entrypoint-initdb.d/Data.sql
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: numerweb_backend
+    restart: "always"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: numerweb_frontend
+    restart: "always"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app        # mount เฉพาะโฟลเดอร์ frontend
+      - /app/node_modules
+    command: npm run dev -- --host
+
+volumes:
+  postgres_data:
