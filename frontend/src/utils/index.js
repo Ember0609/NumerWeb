@@ -4,3 +4,5 @@ export { FalsePosition } from "./FalsePosition";
 export {Onepoint} from "./Onepoint";
 export { Secent } from "./Secent";
 export { GaussianJordan } from "./GaussianJordan";
+export {Jacobi} from "./Jacobi";
+export {GaussSeidel} from "./GaussSeidel";

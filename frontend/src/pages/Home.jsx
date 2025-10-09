@@ -39,6 +39,12 @@ export default function Home() {
         <Button as={Link} to="/LUDecompositionPage" minW="15vw" colorScheme="teal">
           LU
         </Button>
+        <Button as={Link} to="/JacobiPage" minW="15vw" colorScheme="teal">
+          Jacobi
+        </Button>
+        <Button as={Link} to="/GaussSeidelPage" minW="15vw" colorScheme="teal">
+          GaussSeidel
+        </Button>
       </VStack>
     </Box>
   );

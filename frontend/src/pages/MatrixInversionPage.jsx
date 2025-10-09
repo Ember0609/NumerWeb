@@ -31,14 +31,10 @@ const handleSolve = (matrix, vector) => {
 
         {solution && (
           <MathJaxContext>
-            <Box
-              p={6}
-              bg="white"
-              w="60vw"
-              maxW="800px"
-              borderRadius="lg"
-              boxShadow="lg"
+            <Box p={6} bg="gray.800" w="60%" borderRadius="lg" boxShadow="lg"
             >
+              <Box p={6} bg="white" w="100%" borderRadius="lg" boxShadow="lg"
+              >
               <Heading size="md" mb={4}>
                 Steps
               </Heading>
@@ -61,6 +57,7 @@ const handleSolve = (matrix, vector) => {
                   </MathJax>
                 </Box>
               ))}
+            </Box>
             </Box>
           </MathJaxContext>
         )}

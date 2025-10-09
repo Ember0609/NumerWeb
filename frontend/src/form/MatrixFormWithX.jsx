@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Box, Input, Button, Grid, VStack, HStack, Heading } from "@chakra-ui/react";
+import { Box, Input, Button, Grid, VStack, HStack, Heading,
+  FormControl,
+  FormLabel,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper
+ } from "@chakra-ui/react";
+ 
 
 export default function MatrixForm({ onSolve }) {
   const [size, setSize] = useState(3);
@@ -17,8 +26,10 @@ export default function MatrixForm({ onSolve }) {
     [3, 4, -5],
     [1, -2, 1],
   ]);
-
+  const [x, setX] = useState([0, 0, 0]);
   const [vector, setVector] = useState([9, 0, 4]);
+  const [et, setEt] = useState(0.000001);
+
 
   const handleMatrixChange = (i, j, value) => {
     const newMatrix = [...matrix];
@@ -32,11 +43,18 @@ export default function MatrixForm({ onSolve }) {
     setVector(newVector);
   };
 
+  const handleXChange = (i, value) => {
+    const newX = [...x];
+    newX[i] = value;
+    setX(newX);
+  };
+
   const handleResize = (n) => {
     if (n < 1) return;
     setSize(n);
     setMatrix(Array.from({ length: n }, () => Array(n).fill("")));
     setVector(Array(n).fill(""));
+    setX(Array(n).fill(""));
   };
 
   return (
@@ -101,13 +119,41 @@ export default function MatrixForm({ onSolve }) {
           </VStack>
         </HStack>
 
+        <Heading size="sm" color="white">X</Heading>
+         <Box display="flex" justifyContent="center" w="100%">
+          <Grid templateColumns={`repeat(${size}, 80px)`} gap={2}>
+            {x.map((val, i) => (
+              <Input
+                bg="white"
+                key={`x-${i}`}
+                type="number"
+                value={val}
+                placeholder="0"
+                onChange={(e) => handleXChange(i, e.target.value)}
+              />
+            ))}
+          </Grid>
+        </Box>
+        <FormControl maxW="90%">
+                      <FormLabel color="white">Error Tolerance</FormLabel>
+                      <NumberInput value={et} onChange={(val) => setEt(val)} step={0.000001}>
+                        <NumberInputField bg="white" />
+                        <NumberInputStepper >
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                    </FormControl>
+
         <Button
           colorScheme="teal"
           onClick={() =>
             onSolve(
               // แปลง string เป็น number ก่อนส่ง
               matrix.map(row => row.map(val => parseFloat(val) || 0)),
-              vector.map(val => parseFloat(val) || 0)
+              vector.map(val => parseFloat(val) || 0),
+               x.map(val => parseFloat(val) || 0),
+              et
             )
           }
         >

@@ -53,7 +53,7 @@ export class LUDecomposition {
       for (let j = i + 1; j < n; j++) {
         sum += this.U[i][j] * this.x[j];
       }
-      this.x[i] = this.y[i] - sum; // U diagonal = 1
+      this.x[i] = this.y[i] - sum; 
       this.xback.push(`x_{${i + 1}} = ${this.x[i].toFixed(3)}`)
     }
 

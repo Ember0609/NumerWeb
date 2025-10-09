@@ -24,42 +24,41 @@ export default function App() {
     <Box p={6} bg="gray.700" minW="100vw" minH="100vh">
       <VStack spacing={6}>
         <Heading color="white">Gaussian Elimination</Heading>
-        
+
         <MatrixForm onSolve={handleSolve} />
 
         {solution && (
           <MathJaxContext>
-            <Box
-              p={6}
-              bg="white"
-              w="60vw"
-              maxW="800px"
-              borderRadius="lg"
-              boxShadow="lg"
+            <Box p={6} bg="gray.800" w="60%" borderRadius="lg" boxShadow="lg"
             >
-              <Heading size="md" mb={4}>
-                Steps
-              </Heading>
+              <Box p={6} bg="white" w="100%" borderRadius="lg" boxShadow="lg"
+              >
+                <Heading size="md" mb={4}>
+                  Steps
+                </Heading>
 
-              {steps.map((s, i) => (
-                <Box key={i} mb={3}>
-                  <MathJax style={{ fontSize: "1rem" }}>{`\\(${s}\\)`}</MathJax>
-                </Box>
-              ))}
+                {steps.map((s, i) => (
+                  <Box key={i} mb={3}>
+                    <MathJax style={{ fontSize: "1rem" }}>{`\\(${s}\\)`}</MathJax>
+                  </Box>
+                ))}
 
-              <Heading size="md" mt={4}>
-                Solution
-              </Heading>
+                <Heading size="md" mt={4}>
+                  Solution
+                </Heading>
 
-              {solution.map((x, i) => (
-                <Box key={i} mb={1}>
-                  <MathJax style={{ fontSize: "1.1rem" }}>
-                    {`\\(x_{${i + 1}} = ${x.toFixed(3)}\\)`}
-                  </MathJax>
-                </Box>
-              ))}
+                {solution.map((x, i) => (
+                  <Box key={i} mb={1}>
+                    <MathJax style={{ fontSize: "1.1rem" }}>
+                      {`\\(x_{${i + 1}} = ${x.toFixed(3)}\\)`}
+                    </MathJax>
+                  </Box>
+                ))}
+              </Box>
+
             </Box>
           </MathJaxContext>
+
         )}
       </VStack>
     </Box>
