@@ -6,3 +6,5 @@ export { Secent } from "./Secent";
 export { GaussianJordan } from "./GaussianJordan";
 export {Jacobi} from "./Jacobi";
 export {GaussSeidel} from "./GaussSeidel";
+export {Cholesky} from "./Cholesky"
+export { ConjugateGradient } from "./ConjugateGradient";

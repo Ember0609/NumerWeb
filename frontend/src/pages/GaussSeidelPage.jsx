@@ -23,7 +23,7 @@ export default function App() {
     return (
         <Box p={6} bg="gray.700" minW="100vw" minH="100vh">
             <VStack spacing={6}>
-                <Heading color="white">Jacobi</Heading>
+                <Heading color="white">Gauss-Seidel</Heading>
 
                 <MatrixForm onSolve={handleSolve} />
 

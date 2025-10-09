@@ -7,7 +7,7 @@ export default function Home() {
       <VStack spacing={4}>
         <Heading color={"white"} >Numerical Methods</Heading>
         <Button as={Link} to="/graphicalpage" minW="15vw" colorScheme="teal">
-          Graphical 
+          Graphical
         </Button>
         <Button as={Link} to="/bisectionpage" minW="15vw" colorScheme="teal">
           Bisection
@@ -45,6 +45,13 @@ export default function Home() {
         <Button as={Link} to="/GaussSeidelPage" minW="15vw" colorScheme="teal">
           GaussSeidel
         </Button>
+        <Button as={Link} to="/CholeskyPage" minW="15vw" colorScheme="teal">
+          Cholesky
+        </Button>
+        <Button as={Link} to="/ConjugateGradientPage" minW="15vw" colorScheme="teal">
+          Conjugate Gradient
+        </Button>
+
       </VStack>
     </Box>
   );
