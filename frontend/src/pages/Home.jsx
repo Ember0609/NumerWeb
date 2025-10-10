@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <Box p={6} bg="gray.800" minW="100vw" minH="100vh" display="flex" justifyContent="center"  >
+    <Box p={6} bg="gray.800" minW="100vw" minH="100vh" display="flex" justifyContent="center"  overflowX="hidden">
       <VStack spacing={4}>
         <Heading color={"white"} >Numerical Methods</Heading>
         <Button as={Link} to="/graphicalpage" minW="15vw" colorScheme="teal">

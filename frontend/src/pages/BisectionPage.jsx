@@ -29,7 +29,7 @@ export default function App() {
     };
 
     return (
-        <Box p={6} bg="gray.700" minW="100vw" minH="100vh">
+        <Box p={6} bg="gray.700" minW="100vw" minH="100vh" overflowX="hidden">
             <VStack spacing={4}>
                 <Heading color={"white"}>Bisection Methods</Heading>
                 <Center>
@@ -37,7 +37,7 @@ export default function App() {
                 </Center>
 
                 {result && (
-                    <Box p={6} bg="gray.800" w="40vw" borderRadius="lg" boxShadow="lg">
+                    <Box p={6} bg="gray.800" w="40vw" borderRadius="lg" boxShadow="lg" overflowX="hidden">
 
                         <VStack spacing={3}>
                             <Center>
