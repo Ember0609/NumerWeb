@@ -51,7 +51,18 @@ export default function Home() {
         <Button as={Link} to="/ConjugateGradientPage" minW="15vw" colorScheme="teal">
           Conjugate Gradient
         </Button>
-
+        <Button as={Link} to="/TrapezoidalPage" minW="15vw" colorScheme="teal">
+          Trapezoidal
+        </Button>
+        <Button as={Link} to="/CompositeTrapezoidalPage" minW="15vw" colorScheme="teal">
+          Composite-Trapezoidal
+        </Button>
+        <Button as={Link} to="/SimpsonPage" minW="15vw" colorScheme="teal">
+          Simpson
+        </Button>e
+        <Button as={Link} to="/CompositeSimpsonPage" minW="15vw" colorScheme="teal">
+          Composite-Simpson
+        </Button>
       </VStack>
     </Box>
   );

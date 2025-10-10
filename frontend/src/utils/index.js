@@ -8,3 +8,7 @@ export {Jacobi} from "./Jacobi";
 export {GaussSeidel} from "./GaussSeidel";
 export {Cholesky} from "./Cholesky"
 export { ConjugateGradient } from "./ConjugateGradient";
+export {Trapezoidal} from "./Trapezoidal";
+export {CompositeTrapezoidal} from "./CompositeTrapezoidal";
+export {Simpson} from "./Simpson";
+export {CompositeSimpson} from "./CompositeSimpson";

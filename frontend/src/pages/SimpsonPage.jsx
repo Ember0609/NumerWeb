@@ -2,16 +2,16 @@ import { useState } from "react";
 import { Box, Center, Heading, VStack } from "@chakra-ui/react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import Integretion from "../form/Integretion";
-import { Trapezoidal } from "../utils/";
+import { Simpson } from "../utils/";
 
-export default function TrapezoidalPage() {
+export default function SimpsonPage() {
     const [answer, setAnswer] = useState(null);
     const [steps, setSteps] = useState([]);
     const [problem, setProblem] = useState(null); // State ใหม่สำหรับเก็บโจทย์
 
-    const TrapezoidalCal = ({ a, b, fx }) => {
+    const SimpsonCal = ({ a, b, fx }) => {
         try {
-            const cal = new Trapezoidal(a, b, fx);
+            const cal = new Simpson(a, b, fx);
             const res = cal.solve();
 
             setProblem(`\\int_{${a}}^{${b}} (${cal.rawF}) \\,dx`);
@@ -26,9 +26,9 @@ export default function TrapezoidalPage() {
     return (
         <Box p={6} bg="gray.700" minW="100vw" minH="100vh" overflowX="hidden">
             <VStack spacing={6}>
-                <Heading color={"white"}>Trapezoidal Rule</Heading>
+                <Heading color={"white"}>Simpson Rule</Heading>
                 <Center>
-                    <Integretion onCalculate={TrapezoidalCal} />
+                    <Integretion onCalculate={SimpsonCal} />
                 </Center>
 
                 {answer !== null && (
@@ -52,7 +52,6 @@ export default function TrapezoidalPage() {
                                     <MathJax style={{ fontSize: "1.1rem" }}>
                                         {`\\(I \\approx ${answer.toFixed(6)}\\)`}
                                     </MathJax>
-
                             </Box>
                         </Box>
                     </MathJaxContext>
