@@ -59,7 +59,7 @@ export default function Home() {
         </Button>
         <Button as={Link} to="/SimpsonPage" minW="15vw" colorScheme="teal">
           Simpson
-        </Button>e
+        </Button>
         <Button as={Link} to="/CompositeSimpsonPage" minW="15vw" colorScheme="teal">
           Composite-Simpson
         </Button>
@@ -71,6 +71,12 @@ export default function Home() {
         </Button>
         <Button as={Link} to="/NewtonDividedPage" minW="15vw" colorScheme="teal">
           NewtonDivied
+        </Button>
+        <Button as={Link} to="/LagrangePage" minW="15vw" colorScheme="teal">
+          Lagrange
+        </Button>
+        <Button as={Link} to="/SplinePage" minW="15vw" colorScheme="teal">
+          Spline
         </Button>
       </VStack>
     </Box>

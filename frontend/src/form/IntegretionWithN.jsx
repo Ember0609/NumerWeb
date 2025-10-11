@@ -14,7 +14,6 @@ import {
   NumberDecrementStepper
 } from "@chakra-ui/react";
 import { useState } from "react";
-import examples from "../data/examples.json";
 
 export default function XLRform({ onCalculate }) {
   const [a, setA] = useState(2);

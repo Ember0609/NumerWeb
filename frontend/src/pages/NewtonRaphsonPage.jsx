@@ -2,7 +2,7 @@ import { Box,  Center, Heading,  VStack,} from "@chakra-ui/react";
 import { useEffect,useState } from "react";
 import EquationP2 from "../form/EquationP2";
 import Chart from "../component/Chart";
-import NewtonTable from "../component/NewtonTable";
+import Table from "../component/Table";
 import { NewtonRaphson } from "../utils/NewtonRaphson";
 
 
@@ -52,7 +52,7 @@ export default function App() {
                                 w="60%"
                             >{result}</Box>
                             <Chart data = {data}/>
-                            <NewtonTable data={data} />
+                            <Table data={data} />
                         </VStack>
                     </Box>
                 )}

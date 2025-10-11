@@ -18,8 +18,8 @@ export default function BisectionTable({ data }) {
                     {data.map((row, index) => (
                         <Tr key={index}>
                             <Td>{row.iteration}</Td>
-                            <Td>{row.root.toFixed(5)}</Td>
-                            <Td>{row.fx.toFixed(5)}</Td>
+                            <Td>{row.root.toFixed(6)}</Td>
+                            <Td>{row.fx.toFixed(6)}</Td>
                             <Td>{row.error.toFixed(7)}</Td>
                         </Tr>
                     ))}
