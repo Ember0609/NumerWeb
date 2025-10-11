@@ -66,6 +66,12 @@ export default function Home() {
         <Button as={Link} to="/DividedPage" minW="15vw" colorScheme="teal">
           Divided
         </Button>
+        <Button as={Link} to="/NewtonDividedPage" minW="15vw" colorScheme="teal">
+          Newton
+        </Button>
+        <Button as={Link} to="/NewtonDividedPage" minW="15vw" colorScheme="teal">
+          NewtonDivied
+        </Button>
       </VStack>
     </Box>
   );
