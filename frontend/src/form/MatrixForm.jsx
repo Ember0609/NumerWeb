@@ -72,7 +72,7 @@ export default function MatrixForm({ onSolve }) {
                       key={`${i}-${j}`}
                       type="number"
                       value={val}
-                      placeholder="0" // แสดง 0 จาง ๆ
+                      placeholder="0"
                       onChange={(e) => handleMatrixChange(i, j, e.target.value)}
                     />
                   ))
@@ -105,7 +105,6 @@ export default function MatrixForm({ onSolve }) {
           colorScheme="teal"
           onClick={() =>
             onSolve(
-              // แปลง string เป็น number ก่อนส่ง
               matrix.map(row => row.map(val => parseFloat(val) || 0)),
               vector.map(val => parseFloat(val) || 0)
             )

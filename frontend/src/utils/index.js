@@ -12,3 +12,4 @@ export {Trapezoidal} from "./Trapezoidal";
 export {CompositeTrapezoidal} from "./CompositeTrapezoidal";
 export {Simpson} from "./Simpson";
 export {CompositeSimpson} from "./CompositeSimpson";
+export {Divided} from "./Divided";

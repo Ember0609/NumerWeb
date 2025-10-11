@@ -63,6 +63,9 @@ export default function Home() {
         <Button as={Link} to="/CompositeSimpsonPage" minW="15vw" colorScheme="teal">
           Composite-Simpson
         </Button>
+        <Button as={Link} to="/DividedPage" minW="15vw" colorScheme="teal">
+          Divided
+        </Button>
       </VStack>
     </Box>
   );
