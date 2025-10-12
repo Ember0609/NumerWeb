@@ -2,12 +2,12 @@ import { parse } from "mathjs";
 
 export class Simpson {
     constructor(a, b, f) {
-        this.A = parseFloat(a); // ควรแปลงเป็นตัวเลขเสมอ
+        this.A = parseFloat(a); 
         this.B = parseFloat(b);
         const pf = f.replace(/(\d)([a-zA-Z])/g, '$1*$2');
         this.rawF = f;
         this.fp = parse(pf);
-        this.steps = []; // สร้างอาเรย์สำหรับเก็บขั้นตอน
+        this.steps = [];
     }
 
     evalAt(x) {
@@ -39,8 +39,7 @@ export class Simpson {
 
         let ans = (h / 3) * (fx[0] + (4*fx[1]) + fx[2] );
         this.steps.push(`I \\approx \\frac{${h}}{3} (${fx[0].toFixed(4)} + 4 (${fx[1].toFixed(4)}) + ${fx[2].toFixed(4)} ) = ${ans.toFixed(4)}`);
-        
-        // คืนค่าทั้งคำตอบและขั้นตอน
+    
         return { ans, steps: this.steps };
     }
 }
