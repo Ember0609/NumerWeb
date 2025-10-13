@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Input, Button, Grid, VStack, HStack, Heading } from "@chakra-ui/react";
 
-export default function MatrixForm({ onSolve }) {
+export default function MatrixForm({ onSolve, problemType = 'matrix' }) {
   const [size, setSize] = useState(3);
 
   const [matrix, setMatrix] = useState([
