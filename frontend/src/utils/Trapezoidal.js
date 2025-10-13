@@ -29,7 +29,7 @@ export class Trapezoidal {
         fx[0] = this.evalAt(this.A);
         this.steps.push(`f(x_0 = ${this.A}) = ${formatEquation(this.A)}  = ${fx[0].toFixed(4)}`);
         fx[1] = this.evalAt(this.B);
-        this.steps.push(`f(x_1 = ${this.B}) = ${formatEquation(this.B)}  = ${fx[0].toFixed(4)}`);
+        this.steps.push(`f(x_1 = ${this.B}) = ${formatEquation(this.B)}  = ${fx[1].toFixed(4)}`);
 
         let ans = (h / 2) * (fx[0] + fx[1]);
         this.steps.push(`I \\approx \\frac{${h}}{2} (${fx[0].toFixed(4)} + ${fx[1].toFixed(4)}) = ${ans.toFixed(4)}`);

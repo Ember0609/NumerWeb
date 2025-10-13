@@ -72,12 +72,16 @@ export default function Home() {
         <Button as={Link} to="/NewtonDividedPage" minW="15vw" colorScheme="teal">
           NewtonDivied
         </Button>
-        <Button as={Link} to="/LagrangePage" minW="15vw" colorScheme="teal">
-          Lagrange
+        <Button as={Link} to="/Try" minW="15vw" colorScheme="teal">
+          Try
         </Button>
-        <Button as={Link} to="/SplinePage" minW="15vw" colorScheme="teal">
-          Spline
+         <Button as={Link} to="/ooo" minW="15vw" colorScheme="teal">
+          OOO
         </Button>
+        <Button as={Link} to="/LinearRegression" minW="15vw" colorScheme="teal">
+          LinearRegression
+        </Button>
+        
       </VStack>
     </Box>
   );

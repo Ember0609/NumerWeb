@@ -29,6 +29,7 @@ export default function CramerPage() {
         {solution && (
           <Center w="100%">
             <MathJaxContext>
+      
               <Box p={6} bg="gray.800" w="60%" borderRadius="lg" boxShadow="lg"
               >
 
@@ -38,7 +39,7 @@ export default function CramerPage() {
 
                   {steps.map((s, i) => (
                     <Box key={i} mb={3} >
-                      <MathJax>{`\\( \\large ${s} \\)`}</MathJax>
+                      <MathJax>{`\\( ${s} \\)`}</MathJax>
                     </Box>
                   ))}
 

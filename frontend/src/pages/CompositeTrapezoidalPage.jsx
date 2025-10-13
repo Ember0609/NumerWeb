@@ -33,7 +33,7 @@ export default function CompositeTrapezoidalPage() {
 
                 {answer !== null && (
                     <MathJaxContext>
-                        <Box p={6} bg="gray.800" w="60%" borderRadius="lg" boxShadow="lg">
+                        <Box p={6} bg="gray.800" minw="60%" borderRadius="lg" boxShadow="lg">
                             <Box p={6} bg="white" w="100%" borderRadius="lg" boxShadow="lg">
                                 
     
