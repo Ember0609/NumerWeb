@@ -19,9 +19,9 @@ export default function DiffForm({ onCalculate }) {
   const [order, setOrder] = useState(1); // กำหนดค่าเริ่มต้นเป็น 1
   const [error , setError] = useState(1);
   const [direction , setDirection] = useState(1);
-  const [x, setX] = useState(1);
-  const [fx, setFx] = useState("x^4-13");
-  const [h, setH] = useState(0.25); // ตัวแปรนี้อาจไม่จำเป็นสำหรับ diff
+  const [x, setX] = useState();
+  const [fx, setFx] = useState("");
+  const [h, setH] = useState(); // ตัวแปรนี้อาจไม่จำเป็นสำหรับ diff
 
   const [availableErrorOptions, setAvailableErrorOptions] = useState([]);
 
@@ -30,7 +30,21 @@ export default function DiffForm({ onCalculate }) {
       // ส่งค่าทั้งหมดที่จำเป็นไป
       onCalculate({ order, direction, error, x, fx, h });
     }
-  };    
+  };
+  
+  const LoadRandomExample = async () => {
+    try {
+      const example = await fetch("http://127.0.0.1:8000/examples/differentiation")
+        .then(res => res.json());
+      if (!example || example.fx === undefined) return;
+      setFx(example.fx);
+      setX(example.x.toString());
+      setH(example.h.toString());
+    } catch (error) {
+      console.error("Failed to load differentiation example:", error);
+      alert("Failed to load example from backend");
+    }
+  };
 
   // สร้าง list ของ options ธรรมดา
   const orderOptions = [
@@ -130,6 +144,9 @@ export default function DiffForm({ onCalculate }) {
 
             <Button colorScheme="teal" w="90%" onClick={Submit}>
               Calculate
+            </Button>
+            <Button colorScheme="purple" w="90%" onClick={LoadRandomExample}>
+              Load Random Example
             </Button>
           </VStack>
         </Box>

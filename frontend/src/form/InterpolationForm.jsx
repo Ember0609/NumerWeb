@@ -12,11 +12,8 @@ export default function InterpolationForm({ onCalculate }) {
   const [numPoints, setNumPoints] = useState(3);
   
   const [points, setPoints] = useState([
-    { x: '1', y: '-2' },
-    { x: '1.25', y: '1.8359375' },
-    { x: '1.5', y: '12.5625' },
   ]);
-  const [xValue, setXValue] = useState('1.4');
+  const [xValue, setXValue] = useState('0');
 
   useEffect(() => {
     const newPoints = Array.from({ length: numPoints }, (_, i) => {
@@ -44,6 +41,21 @@ export default function InterpolationForm({ onCalculate }) {
     }
 
     onCalculate(numericPoints, numericXValue);
+  };
+
+
+  const LoadRandomExample = async () => {
+    try {
+      const example = await fetch("http://127.0.0.1:8000/examples/interpolation")
+        .then(res => res.json());
+      if (!example || !example.points) return;
+      setNumPoints(example.points.length);
+      setPoints(example.points);
+      setXValue(example.xValue.toString());
+    } catch (error) {
+      console.error("Failed to load interpolation example:", error);
+      alert("Failed to load example from backend");
+    }
   };
 
   return (
@@ -91,6 +103,9 @@ export default function InterpolationForm({ onCalculate }) {
         
         <Button colorScheme="teal" w="90%" onClick={handleSubmit}>
           Calculate
+        </Button>
+        <Button colorScheme="purple" w="90%" onClick={LoadRandomExample}>
+          Load Random Example
         </Button>
       </VStack>
     </Box>

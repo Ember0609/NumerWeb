@@ -18,7 +18,7 @@ import { useState } from "react";
 export default function XLRform({ onCalculate }) {
   const [xl, setXl] = useState(1);
   const [xr, setXr] = useState(10);
-  const [fx, setFx] = useState("x^4-13");
+  const [fx, setFx] = useState("");
   const [et, setEt] = useState(0.000001);
 
   const Submit = () => {

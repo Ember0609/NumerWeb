@@ -18,7 +18,7 @@ import { useState } from "react";
 export default function SecentForm({ onCalculate }) {
   const [x0, setX0] = useState(1);
   const [x1, setX1] = useState(10);
-  const [fx, setFx] = useState("x^4-13");
+  const [fx, setFx] = useState("");
   const [et, setEt] = useState(0.000001);
 
   const Submit = () => {

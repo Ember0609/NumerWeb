@@ -31,7 +31,7 @@ const handleSolve = (matrix, vector) => {
       <VStack spacing={6}>
         <Heading color="white">LU-Decomposition</Heading>
 
-        <MatrixForm onSolve={handleSolve} />
+        <MatrixForm onSolve={handleSolve} problemType="matrix"/>
 
         {x.length > 0 && (
           <MathJaxContext>

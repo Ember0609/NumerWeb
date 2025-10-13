@@ -24,7 +24,7 @@ export default function CramerPage() {
       <VStack spacing={6}>
         <Heading color="white">Cramer’s Rule</Heading>
 
-        <MatrixForm onSolve={handleSolve} />
+        <MatrixForm onSolve={handleSolve} problemType="matrix" />
 
         {solution && (
           <Center w="100%">

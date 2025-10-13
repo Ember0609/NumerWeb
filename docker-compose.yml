@@ -9,7 +9,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./db/Data.sql:/docker-entrypoint-initdb.d/Data.sql
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
   backend:
     build:
@@ -38,16 +38,5 @@ services:
       - /app/node_modules
     command: npm run dev -- --host
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: numer_pgadmin
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@numerweb.com # อีเมลสำหรับ login pgAdmin
-      PGADMIN_DEFAULT_PASSWORD: admin # รหัสผ่านสำหรับ login pgAdmin
-    ports:
-      - "5050:80" # map port 5050 ของเครื่องเราเข้ากับ port 80 ของ container
-    depends_on:
-      - db
 volumes:
   postgres_data:

@@ -72,6 +72,34 @@ export default function RegressionForm({ onCalculate }) {
     onCalculate(numericPoints, numericXtoPredict, type, order);
   };
 
+  const LoadRandomExample = async () => {
+    const problemType = type === 'polynomial' ? 'regression_poly' : 'regression_multi';
+    try {
+      const example = await fetch(`http://127.0.0.1:8000/examples/${problemType}`)
+        .then(res => res.json());
+      
+      if (!example || !example.points) return;
+
+      setNumPoints(example.points.length);
+      setPoints(example.points.map(p => ({
+          x: p.x.map(String), // แปลงเป็น string สำหรับ input
+          y: String(p.y)
+      })));
+      setXValuesToPredict(example.xToPredict.map(String));
+      
+      if (type === 'polynomial' && example.order) {
+        setOrder(example.order);
+      }
+      if (type === 'multiple') {
+        setNumVars(example.points[0]?.x.length || 2);
+      }
+
+    } catch (error) {
+      console.error("Failed to load regression example:", error);
+      alert("Failed to load example from backend");
+    }
+  };
+
   return (
     <Box p={6} bg="gray.800" borderRadius="lg" boxShadow="md" w="auto">
       <VStack spacing={6}>
@@ -141,6 +169,9 @@ export default function RegressionForm({ onCalculate }) {
         
         <Button colorScheme="teal" w="90%" onClick={handleSubmit}>
           Calculate
+        </Button>
+         <Button colorScheme="purple" w="90%" onClick={LoadRandomExample}>
+          Load Random Example
         </Button>
       </VStack>
     </Box>

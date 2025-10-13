@@ -16,8 +16,8 @@ import {
 import { useState } from "react";
 
 export default function EquationP2({ onCalculate }) {
-    const [xin, setXin] = useState(1);
-    const [fx, setFx] = useState("x^2-7");
+    const [xin, setXin] = useState();
+    const [fx, setFx] = useState("");
     const [et, setEt] = useState(0.000001);
 
     const Submit = () => {
@@ -82,6 +82,9 @@ export default function EquationP2({ onCalculate }) {
 
                         <Button colorScheme="teal" w="90%" onClick={Submit}>
                             Calculate
+                        </Button>
+                        <Button colorScheme="purple" w="90%" onClick={LoadRandomExample}>
+                            Load Random Example
                         </Button>
                     </VStack>
                 </Box>

@@ -5,8 +5,8 @@ export class Regression {
     matrixToLatex(mat) {
         // Function to format a matrix into LaTeX string for display
         return `\\begin{bmatrix}${mat
-          .map(row => row.map(val => val.toFixed(2)).join(" & "))
-          .join("\\\\")}\\end{bmatrix}`;
+            .map(row => row.map(val => val.toFixed(2)).join(" & "))
+            .join("\\\\")}\\end{bmatrix}`;
     }
 
     solve(points, xToPredict, type, order = 1) {
@@ -31,7 +31,7 @@ export class Regression {
                 processedXToPredict.push(Math.pow(xToPredict[0], i));
             }
         }
-        
+
         const n = processedPoints.length;
         if (n <= numVars) {
             throw new Error("Number of data points must be greater than the number of variables/order.");
@@ -82,9 +82,9 @@ export class Regression {
 
         // --- Extract coefficients and form equation ---
         const coefficients = augMatrix.map(row => row[matrixSize]);
-        
+
         let equationStr = "f(x) = " + coefficients[0].toFixed(4);
-        for(let i = 1; i < coefficients.length; i++) {
+        for (let i = 1; i < coefficients.length; i++) {
             const coeff = coefficients[i];
             const sign = coeff >= 0 ? ' + ' : ' - ';
             const power = (type === 'polynomial' && i > 1) ? `^${i}` : '';

@@ -27,7 +27,7 @@ const handleSolve = (matrix, vector) => {
       <VStack spacing={6}>
         <Heading color="white">Matrix Inversion</Heading>
 
-        <MatrixForm onSolve={handleSolve} />
+        <MatrixForm onSolve={handleSolve} problemType="matrix"/>
 
         {solution && (
           <MathJaxContext>

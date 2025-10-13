@@ -39,7 +39,7 @@ export default function CholeskyPage() { // แก้ชื่อ Component
       <VStack spacing={6}>
         <Heading color="white">Cholesky Decomposition</Heading>
 
-        <MatrixForm onSolve={handleSolve} />
+        <MatrixForm onSolve={handleSolve} problemType="matrix_symmetric"/>
 
         {x.length > 0 && (
           <MathJaxContext>

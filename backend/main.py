@@ -16,7 +16,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://db:5173"],
+    allow_origins=["http://localhost:5173"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -48,4 +48,4 @@ def get_random_example_by_type(problem_type: str, db: Session = Depends(get_db))
     # สุ่มเลือกหนึ่งรายการจากผลลัพธ์
     random_example = random.choice(results)
     
-    return random_example[0] # trả về object `data` โดยตรง
+    return random_example[0]

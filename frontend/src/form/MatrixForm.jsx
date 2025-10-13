@@ -1,24 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Input, Button, Grid, VStack, HStack, Heading } from "@chakra-ui/react";
 
 export default function MatrixForm({ onSolve }) {
   const [size, setSize] = useState(3);
 
-  // state เป็น string เพื่อให้ overwrite 0 ได้
-  /* [matrix, setMatrix] = useState(
-    Array.from({ length: 3 }, () => Array(3).fill(""))
-  );
-
-  const [vector, setVector] = useState(Array(3).fill(""));
-  ตัวที่ต้องใช้ */
-
   const [matrix, setMatrix] = useState([
-    [-2, 3, 1],
-    [3, 4, -5],
-    [1, -2, 1],
+
   ]);
 
-  const [vector, setVector] = useState([9, 0, 4]);
+  const [vector, setVector] = useState([]);
 
   const handleMatrixChange = (i, j, value) => {
     const newMatrix = [...matrix];
@@ -38,6 +28,31 @@ export default function MatrixForm({ onSolve }) {
     setMatrix(Array.from({ length: n }, () => Array(n).fill("")));
     setVector(Array(n).fill(""));
   };
+
+    useEffect(() => {
+      handleResize(size);
+    }, []);
+
+
+  const LoadRandomExample = async () => {
+    try {
+      // ❗️ ใช้ `problemType` ที่ได้รับมาในการสร้าง URL
+      const example = await fetch(`http://127.0.0.1:8000/examples/${problemType}`)
+        .then(res => res.json());
+
+      if (!example || !example.matrix_a) {
+        alert("No matrix example data received");
+        return;
+      }
+
+      setSize(example.matrix_a.length);
+      setMatrix(example.matrix_a);
+      setVector(example.vector_b);
+    } catch (error) {
+      console.error(`Failed to load ${problemType} example:`, error);
+      alert("Failed to load example from backend");
+    }
+  }
 
   return (
     <Box
@@ -111,6 +126,10 @@ export default function MatrixForm({ onSolve }) {
           }
         >
           Solve
+        </Button>
+
+        <Button colorScheme="purple" w="90%" onClick={LoadRandomExample}>
+              Load Random Example
         </Button>
       </VStack>
     </Box>

@@ -16,9 +16,9 @@ import {
 import { useState } from "react";
 
 export default function XLRform({ onCalculate }) {
-  const [a, setA] = useState(2);
-  const [b, setB] = useState(8);
-  const [fx, setFx] = useState("4x^5 - 3x^4 + x^3 - 6x + 2x");
+  const [a, setA] = useState();
+  const [b, setB] = useState();
+  const [fx, setFx] = useState("");
 
   const Submit = () => {
     if (onCalculate) {
@@ -26,6 +26,19 @@ export default function XLRform({ onCalculate }) {
     }
   };
 
+   const LoadRandomExample = async () => {
+    try {
+      const example = await fetch("http://127.0.0.1:8000/examples/integration")
+        .then(res => res.json());
+      if (!example || example.a === undefined) return;
+      setA(parseFloat(example.a));
+      setB(parseFloat(example.b));
+      setFx(example.fx);
+    } catch (error) {
+      console.error("Failed to load integration example:", error);
+      alert("Failed to load example from backend");
+    }
+  };
 
   return (
     <VStack spacing={6}>
@@ -64,7 +77,9 @@ export default function XLRform({ onCalculate }) {
             <Button colorScheme="teal" w="90%" onClick={Submit}>
               Calculate
             </Button>
-
+            <Button colorScheme="purple" w="90%" onClick={LoadRandomExample}>
+              Load Random Example
+            </Button>
           </VStack>
         </Box>
       </Center>

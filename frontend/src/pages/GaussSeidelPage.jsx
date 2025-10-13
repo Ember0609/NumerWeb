@@ -25,7 +25,7 @@ export default function App() {
             <VStack spacing={6}>
                 <Heading color="white">Gauss-Seidel</Heading>
 
-                <MatrixForm onSolve={handleSolve} />
+                <MatrixForm onSolve={handleSolve} problemType="matrix" />
 
                 {solution && (
                     <MathJaxContext>
