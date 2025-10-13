@@ -18,8 +18,7 @@ export class ConjugateGradient {
         let count = 0;
         const maxIter = 500;
 
-        // --- Corresponds to the first part of the C++ code ---
-        // find r0 and initial d
+        // find r0 and d
         for (let i = 0; i < n; i++) {
             let sum = 0;
             for (let j = 0; j < n; j++) {
@@ -50,10 +49,7 @@ export class ConjugateGradient {
                 bot_alpha += d[i] * Ad[i]; // d^T * A * d
             }
             
-            // In your C++ code, you calculate alpha differently. Sticking to the C++ logic:
-            // alpha = - (d^T * r) / (d^T * A * d)
-            // But standard form is (r^T * r) / (d^T * A * d)
-            // Here we follow the C++ logic.
+            
             const alpha = -1 * (top_alpha / bot_alpha);
 
 
@@ -104,14 +100,12 @@ export class ConjugateGradient {
             this.history.push({
                 iteration: count,
                 x: [...x0],
-                error: error, // Use single error value as in C++
+                error: error,
             });
 
 
         } while (error > this.et && count < maxIter);
 
-        // For the table, we'll need to adjust it to show a single error value
-        // So we adapt the history format slightly
         const tableSteps = this.history.map(step => ({
             iteration: step.iteration,
             x: step.x,

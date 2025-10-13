@@ -2,12 +2,12 @@ import { parse } from "mathjs";
 
 export class Trapezoidal {
     constructor(a, b, f) {
-        this.A = parseFloat(a); // ควรแปลงเป็นตัวเลขเสมอ
+        this.A = parseFloat(a);
         this.B = parseFloat(b);
         const pf = f.replace(/(\d)([a-zA-Z])/g, '$1*$2');
         this.rawF = f;
         this.fp = parse(pf);
-        this.steps = []; // สร้างอาเรย์สำหรับเก็บขั้นตอน
+        this.steps = []; 
     }
 
     evalAt(x) {
