@@ -2,30 +2,33 @@ import { useState } from "react";
 import { Box, Center, Heading, VStack, FormControl, FormLabel, Select } from "@chakra-ui/react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import InterpolationForm from "../form/InterpolationForm";
-import { Spline } from "../utils/Spline"; // Import class ใหม่
+import { Spline } from "../utils/Spline"; 
 
 export default function SplinePage() {
     const [answer, setAnswer] = useState(null);
     const [steps, setSteps] = useState([]);
     const [xValue, setXValue] = useState(0);
-    const [splineType, setSplineType] = useState('cubic'); // State สำหรับเก็บประเภท Spline
+    const [splineType, setSplineType] = useState('cubic'); 
     const [title, setTitle] = useState('Cubic Spline');
 
     const handleCalculate = (points, xValue) => {
         try {
-            if (points.length < 2) {
-                alert("Spline interpolation requires at least 2 points.");
+            if (splineType === 'linear' && points.length < 2) {
+                alert("Linear Spline requires at least 2 points.");
                 return;
             }
             if (splineType === 'quadratic' && points.length < 3) {
                  alert("Quadratic Spline requires at least 3 points.");
                 return;
             }
+            if (splineType === 'cubic' && points.length < 2) {
+                 alert("Cubic Spline requires at least 2 points.");
+                return;
+            }
             
             const calculator = new Spline(points);
             const { result, steps } = calculator.solve(xValue, splineType);
 
-            // ตั้งชื่อหัวข้อตามประเภทที่เลือก
             setTitle(`${splineType.charAt(0).toUpperCase() + splineType.slice(1)} Spline`);
 
             setAnswer(result);
@@ -42,14 +45,13 @@ export default function SplinePage() {
             <VStack spacing={6}>
                 <Heading color={"white"} size="xl">Spline Interpolation</Heading>
                 <Center>
-                    {/* เพิ่ม Select dropdown เข้าไปในฟอร์ม */}
                     <Box p={6} bg="gray.800" borderRadius="lg" boxShadow="md" w="50vw">
                         <VStack spacing={4}>
                              <FormControl>
                                 <FormLabel color="white">Spline Type</FormLabel>
                                 <Select bg="white" value={splineType} onChange={(e) => setSplineType(e.target.value)}>
                                     <option value='linear'>Linear</option>
-                                    <option value='quadratic'>Quadratic (Not Implemented)</option>
+                                    <option value='quadratic'>Quadratic</option>
                                     <option value='cubic'>Cubic</option>
                                 </Select>
                             </FormControl>
