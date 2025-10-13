@@ -26,6 +26,25 @@ export default function EquationP2({ onCalculate }) {
         }
     };
 
+    const LoadRandomExample = async () => {
+        try {
+            // ❗️ แก้ไข URL ตรงนี้
+            const example = await fetch("http://127.0.0.1:8000/examples/onepoint")
+                .then(res => res.json());
+
+            if (!example || example.xin === undefined) {
+                alert("No example data received");
+                return;
+            }
+            setXin(parseFloat(example.xin));
+            setFx(example.fx);
+            setEt(parseFloat(example.et));
+        } catch (error) {
+            console.error("Failed to load one-point example:", error);
+            alert("Failed to load example from backend");
+        }
+    };
+
     return (
         <VStack spacing={6}>
             <Center>

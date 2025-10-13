@@ -28,26 +28,18 @@ export default function XLRform({ onCalculate }) {
   };
 
  const LoadRandomExample = async () => {
-  try {
-    const example = await fetch("http://127.0.0.1:8000/examples")
-      .then(res => res.json());
+    try {
+        // แค่เปลี่ยน URL ให้ระบุประเภทโจทย์
+        const example = await fetch("http://127.0.0.1:8000/examples/bisection")
+            .then(res => res.json());
 
-    console.log("Random Example:", example);
-
-    if (!example || example.xl === undefined || example.xr === undefined || example.fx === undefined || example.et === undefined) {
-      alert("No example data received from backend");
-      return;
-    }
-
-    setXl(parseFloat(example.xl));
-    setXr(parseFloat(example.xr));
-    setFx(example.fx);
-    setEt(parseFloat(example.et));
-  } catch (error) {
-    console.error("Failed to load example:", error);
-    alert("Failed to load example from backend");
-  }
- }
+        // ที่เหลือเหมือนเดิม
+        setXl(parseFloat(example.xl));
+        setXr(parseFloat(example.xr));
+        setFx(example.fx);
+        setEt(parseFloat(example.et));
+    } catch (error) { /* ... */ }
+}
 
   return (
     <VStack spacing={6}>
@@ -98,12 +90,9 @@ export default function XLRform({ onCalculate }) {
               Calculate
             </Button>
 
-            <Button colorScheme="purple" w="90%" onClick={() => {
-              console.log("Button clicked!");
-              LoadRandomExample();
-            }}>
-              Load Random Example
-            </Button>
+            <Button colorScheme="purple" onClick={LoadRandomExample}>
+                    Load Random Example
+                </Button>
           </VStack>
         </Box>
       </Center>
