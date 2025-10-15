@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
@@ -33,19 +33,9 @@ def get_db():
 def read_root():
     return {"Hello": "World"}
 
-# --- API Endpoint เดียวสำหรับทุกโจทย์ ---
 @app.get("/examples/{problem_type}")
 def get_random_example_by_type(problem_type: str, db: Session = Depends(get_db)):
-    """
-    ดึงข้อมูลโจทย์แบบสุ่มตามประเภทที่ระบุ (e.g., 'bisection', 'onepoint', 'matrix')
-    """
     query = text("SELECT data FROM examples WHERE problem_type = :type")
     results = db.execute(query, {"type": problem_type}).fetchall()
-    
-    if not results:
-        raise HTTPException(status_code=404, detail="Problem type not found")
-        
-    # สุ่มเลือกหนึ่งรายการจากผลลัพธ์
     random_example = random.choice(results)
-    
     return random_example[0]
